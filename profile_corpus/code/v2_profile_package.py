@@ -1,4 +1,4 @@
-"""Package and check the examiner profile corpus v2 for the team (offline, no API calls).
+"""Package and check the examiner profile corpus v2 (offline, no API calls).
 
   cd ~/examinerbench && python3 scripts/v2_profile_package.py [build_folder]
 

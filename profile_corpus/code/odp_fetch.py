@@ -1,10 +1,10 @@
 """
-ODP file-wrapper fetcher for ProsecutionBench (A's data pipeline).
+ODP file-wrapper fetcher.
 
 Run on your Mac (needs USPTO_API_KEY in the environment, e.g. from ~/.zshrc):
     cd ~/examinerbench
     python3 scripts/odp_fetch.py 11968167 11968176 11968173 --all
-    python3 scripts/odp_fetch.py --ids-file data_v0/sample_ids.csv     # Table-8 docs only
+    python3 scripts/odp_fetch.py --ids-file data_v0/sample_ids.csv     # default document codes only
 
 For each application it saves, under data_v0/apps/<app_id>/:
     raw/meta.json, raw/transactions.json, raw/documents.json   (untouched API responses)
@@ -26,7 +26,7 @@ BASE = "https://api.uspto.gov/api/v1/patent/applications"
 ROOT = Path(__file__).resolve().parent.parent / "data_v0" / "apps"
 MIN_GAP = 0.35          # seconds between calls (ODP: no parallel requests per key)
 
-# Table 8 of the paper + codes B needs to check round alignment
+# document codes downloaded by default, plus codes used to check round alignment
 TABLE8_PREFIXES = ("A.", "A...", "AF/D", "AFF", "DECL")
 TABLE8_CODES = {
     "SPEC", "CLM", "ABST",
@@ -169,7 +169,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("ids", nargs="*")
     ap.add_argument("--ids-file", help="CSV with an app_id column")
-    ap.add_argument("--all", action="store_true", help="download every document, not just Table 8")
+    ap.add_argument("--all", action="store_true", help="download every document, not just the default document codes")
     a = ap.parse_args()
     key = os.environ.get("USPTO_API_KEY")
     if not key:

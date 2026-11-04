@@ -1,7 +1,7 @@
-"""Examiner profile corpus v2 (A's part of phase 1 of the RAG examiner-profile plan, Oct 2026).
+"""Examiner profile corpus v2 (Oct 2026).
 
-For every test example (default: test_core) it downloads the examiner's OTHER applications, so that B (similar
-past cases) and D (examiner numbers) can build one frozen profile per example. Run on the Mac (needs
+For every test example (default: test_core) it downloads the examiner's OTHER applications, so that one frozen
+examiner profile (similar past cases and examiner statistics) can be built per example. Run on the Mac (needs
 USPTO_API_KEY; sequential calls only; resumable: re-running skips everything already on disk):
 
   cd ~/examinerbench && source ~/.zshrc

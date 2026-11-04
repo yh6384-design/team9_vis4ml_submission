@@ -1,4 +1,4 @@
-"""Scale-up fetcher for ProsecutionBench (run on the Mac; needs USPTO_API_KEY, sequential calls only).
+"""Scale-up fetcher (run on the Mac; needs USPTO_API_KEY, sequential calls only).
 
 Frame: same as the pilot (OARD office_actions.csv, application numbers 11/960,000-14/999,999 whose
 earliest OARD action is a CTNF, technology centers 1600-3700), about 2.1 million applications, minus the
@@ -10,7 +10,7 @@ Per application (resumable; finished apps are listed in <out>/index.jsonl and sk
                     catalog.csv / transactions.csv / status.json, exactly as odp_fetch.py writes them;
                     a quick eligibility screen (filing 2008-2015, utility, O1 = CTNF/CTFR, reply to O1);
   phase 2 (eligible apps): native office-action text (Office Action Text Retrieval API, small);
-  phase 3 (only with --pdf, eligible apps): Table-8 PDFs (about 4 MB per app). Stops cleanly when free
+  phase 3 (only with --pdf, eligible apps): PDFs of the default document codes (about 4 MB per app). Stops cleanly when free
                     disk space falls below --min-free-gb.
 
 Usage (from ~/examinerbench):
@@ -18,7 +18,7 @@ Usage (from ~/examinerbench):
   caffeinate -i nohup python3 scripts/full_fetch.py --limit 5000 > full_fetch.log 2>&1 &
   tail -f full_fetch.log                              # watch progress; Ctrl-C only stops tail
   python3 scripts/full_fetch.py --limit 20000         # later: same order, continues where it stopped
-  python3 scripts/full_fetch.py --limit 5000 --pdf    # also download Table-8 PDFs (needs disk space)
+  python3 scripts/full_fetch.py --limit 5000 --pdf    # also download PDFs (needs disk space)
   python3 scripts/full_fetch.py --out /Volumes/MyDrive/data_full ...   # put data on an external drive
 To stop a background run:  pkill -f full_fetch.py   (safe; the current app is redone on restart)
 """
@@ -105,7 +105,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(R / "data_full"))
     ap.add_argument("--limit", type=int, default=5000, help="process the first N apps of the frame order")
-    ap.add_argument("--pdf", action="store_true", help="also download Table-8 PDFs for eligible apps")
+    ap.add_argument("--pdf", action="store_true", help="also download PDFs for eligible apps")
     ap.add_argument("--min-free-gb", type=float, default=10.0)
     a = ap.parse_args()
     key = os.environ.get("USPTO_API_KEY") or sys.exit("USPTO_API_KEY is not set. Run:  source ~/.zshrc")
@@ -150,7 +150,7 @@ def main():
         if rec["eligible"]:
             rec["oa_text"] = oa_text(s, app_dir, app)
             if a.pdf:
-                F.wanted = real_wanted                    # phase 3: Table-8 PDFs (JSON is cached)
+                F.wanted = real_wanted                    # phase 3: PDFs (JSON is cached)
                 st2 = F.fetch_app(s, app, False)
                 rec.update({"pdf_done": True, "n_pdf": st2.get("n_downloaded"), "pdf_bytes": st2.get("bytes")})
         rec["fetched_at"] = time.strftime("%Y-%m-%d %H:%M:%S")

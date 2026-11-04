@@ -1,7 +1,7 @@
 """Derive the t=1 round (O1, A1, cutoff, next event, label) from an app's ODP catalog.csv.
 Usage: python3 scripts/build_rounds.py <app_id> [...]   (or --all)
 Writes data_v0/apps/<app>/rounds.json and appends rows to data_v0/manifest.jsonl (rebuilt each run).
-Rules follow the week plan, section 2 (CTNF/CTFR -> 1, NOA -> 0, other communications -> other,
+Rules (CTNF/CTFR -> 1, NOA -> 0, other communications -> other,
 RCE/appeal/abandonment first -> out_of_scope, nothing yet -> censored)."""
 import csv, json, sys
 from pathlib import Path
