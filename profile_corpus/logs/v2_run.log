@@ -1,0 +1,201 @@
+[1/99] ex_1be353d6e9 cases=1 search=300 screened=44 usable=30 | 0.0 min/examiner
+[2/99] ex_4c4dce6cd0 cases=1 search=231 screened=37 usable=30 | 0.0 min/examiner
+[3/99] ex_fbf6cc5724 cases=1 search=300 screened=45 usable=30 | 1.4 min/examiner
+[4/99] ex_bc3639488b cases=1 search=144 screened=45 usable=30 | 2.1 min/examiner
+[5/99] ex_fb950eb3fc cases=1 search=276 screened=32 usable=30 | 2.7 min/examiner
+[6/99] ex_f18da45303 cases=1 search=300 screened=36 usable=30 | 2.9 min/examiner
+[7/99] ex_22738d2c10 cases=1 search=101 screened=77 usable=30 | 3.2 min/examiner
+[8/99] ex_852bce11f3 cases=1 search=146 screened=42 usable=30 | 3.3 min/examiner
+[9/99] ex_de41e4476c cases=1 search=300 screened=41 usable=30 | 3.4 min/examiner
+[10/99] ex_447707920d cases=1 search=63 screened=63 usable=24 | 3.4 min/examiner
+[11/99] ex_bff8bee2b1 cases=1 search=300 screened=50 usable=30 | 3.5 min/examiner
+[12/99] ex_9d2319049e cases=2 search=300 screened=63 usable=30 | 3.6 min/examiner
+[13/99] ex_f68cade931 cases=1 search=300 screened=89 usable=30 | 3.7 min/examiner
+[14/99] ex_dce20ce53e cases=1 search=300 screened=47 usable=30 | 3.8 min/examiner
+[15/99] ex_7657097da7 cases=1 search=275 screened=38 usable=30 | 3.9 min/examiner
+[16/99] ex_8dbb8b6a13 cases=1 search=300 screened=35 usable=30 | 3.9 min/examiner
+[17/99] ex_d8ab71f18c cases=1 search=168 screened=61 usable=30 | 4.0 min/examiner
+[18/99] ex_37e823dc22 cases=1 search=300 screened=34 usable=30 | 4.1 min/examiner
+[19/99] ex_7e56f02939 cases=1 search=75 screened=52 usable=30 | 4.1 min/examiner
+[20/99] ex_000efef574 cases=1 search=294 screened=33 usable=30 | 4.1 min/examiner
+[21/99] ex_daf48199db cases=1 search=300 screened=53 usable=30 | 4.1 min/examiner
+[22/99] ex_2b135c276b cases=1 search=300 screened=36 usable=30 | 4.1 min/examiner
+[23/99] ex_56ad9ad855 cases=1 search=133 screened=48 usable=30 | 4.2 min/examiner
+[24/99] ex_2e4d39acb2 cases=1 search=300 screened=39 usable=30 | 4.2 min/examiner
+[25/99] ex_f09072bfa1 cases=1 search=300 screened=37 usable=30 | 4.3 min/examiner
+[26/99] ex_0a50161211 cases=1 search=213 screened=40 usable=30 | 4.3 min/examiner
+[27/99] ex_0154c0b421 cases=1 search=195 screened=38 usable=30 | 4.3 min/examiner
+[28/99] ex_2b6a0f17d2 cases=1 search=104 screened=90 usable=1 | 4.4 min/examiner
+[29/99] ex_9b0a896606 cases=1 search=238 screened=60 usable=30 | 4.4 min/examiner
+[30/99] ex_4e1df35643 cases=1 search=47 screened=47 usable=12 | 4.3 min/examiner
+[31/99] ex_9b39ecead4 cases=1 search=300 screened=44 usable=30 | 4.3 min/examiner
+[32/99] ex_ce70799332 cases=1 search=300 screened=35 usable=30 | 4.4 min/examiner
+[33/99] ex_2acc44e527 cases=1 search=52 screened=52 usable=19 | 4.3 min/examiner
+[34/99] ex_0debf8d0c0 cases=1 search=51 screened=51 usable=25 | 4.3 min/examiner
+[35/99] ex_6b2b56228e cases=1 search=253 screened=34 usable=30 | 4.3 min/examiner
+[36/99] ex_26f484b420 cases=1 search=165 screened=41 usable=30 | 4.3 min/examiner
+[37/99] ex_ce8bf67ab8 cases=1 search=300 screened=74 usable=30 | 4.4 min/examiner
+[38/99] ex_5c4a79e58a cases=1 search=300 screened=42 usable=30 | 4.4 min/examiner
+[39/99] ex_3c668a780e cases=1 search=300 screened=42 usable=30 | 4.5 min/examiner
+[40/99] ex_3092cfb4f8 cases=1 search=172 screened=34 usable=30 | 4.5 min/examiner
+[41/99] ex_71f9f02523 cases=1 search=300 screened=43 usable=30 | 4.5 min/examiner
+[42/99] ex_cc3a8716cb cases=1 search=149 screened=37 usable=30 | 4.5 min/examiner
+[43/99] ex_122330dafc cases=1 search=92 screened=34 usable=30 | 4.5 min/examiner
+[44/99] ex_123533817b cases=1 search=300 screened=36 usable=30 | 4.5 min/examiner
+[45/99] ex_840bfd3191 cases=1 search=204 screened=50 usable=30 | 4.6 min/examiner
+[46/99] ex_6fd715cca5 cases=1 search=223 screened=32 usable=30 | 4.6 min/examiner
+[47/99] ex_fa4ab9f851 cases=1 search=291 screened=36 usable=30 | 4.6 min/examiner
+[48/99] ex_915a1ff74a cases=1 search=300 screened=43 usable=30 | 4.6 min/examiner
+[49/99] ex_e8adc4f05b cases=1 search=300 screened=38 usable=30 | 4.6 min/examiner
+[50/99] ex_d87ebb0c2d cases=1 search=134 screened=31 usable=30 | 4.7 min/examiner
+[51/99] ex_17d8dca92d cases=1 search=169 screened=31 usable=30 | 4.6 min/examiner
+[52/99] ex_d1693e5d4e cases=1 search=288 screened=42 usable=30 | 4.7 min/examiner
+[53/99] ex_525085c509 cases=1 search=300 screened=43 usable=30 | 4.7 min/examiner
+[54/99] ex_cc698dd496 cases=1 search=173 screened=51 usable=30 | 4.7 min/examiner
+[55/99] ex_9180cfd258 cases=1 search=300 screened=44 usable=30 | 4.7 min/examiner
+[56/99] ex_bec048f604 cases=1 search=300 screened=40 usable=30 | 4.7 min/examiner
+[57/99] ex_9161282eca cases=1 search=300 screened=49 usable=30 | 4.7 min/examiner
+[58/99] ex_bf5ccf9760 cases=1 search=300 screened=30 usable=30 | 4.7 min/examiner
+[59/99] ex_8a2c109944 cases=1 search=141 screened=31 usable=30 | 4.7 min/examiner
+[60/99] ex_301367e6e4 cases=1 search=300 screened=51 usable=30 | 4.7 min/examiner
+[61/99] ex_86b29a2fc9 cases=1 search=219 screened=45 usable=30 | 4.8 min/examiner
+[62/99] ex_54bcab62d9 cases=1 search=300 screened=64 usable=30 | 4.8 min/examiner
+[63/99] ex_4f761bd894 cases=1 search=200 screened=33 usable=30 | 4.8 min/examiner
+[64/99] ex_a038d8d9ce cases=1 search=300 screened=49 usable=30 | 4.8 min/examiner
+[65/99] ex_4ffcaf4834 cases=1 search=232 screened=40 usable=30 | 4.8 min/examiner
+[66/99] ex_e728fdaac6 cases=1 search=300 screened=46 usable=30 | 4.8 min/examiner
+[67/99] ex_3b706c756a cases=1 search=300 screened=42 usable=30 | 4.8 min/examiner
+[68/99] ex_2e4f5feff7 cases=1 search=300 screened=38 usable=30 | 4.9 min/examiner
+[69/99] ex_479f19b51c cases=1 search=300 screened=38 usable=30 | 4.9 min/examiner
+[70/99] ex_d9b7d95c35 cases=1 search=300 screened=50 usable=30 | 4.9 min/examiner
+[71/99] ex_b8919f4938 cases=1 search=261 screened=36 usable=30 | 4.9 min/examiner
+[72/99] ex_ec3611d7d8 cases=1 search=300 screened=39 usable=30 | 4.9 min/examiner
+[73/99] ex_1684fb4494 cases=1 search=300 screened=55 usable=30 | 4.9 min/examiner
+[74/99] ex_6ed2dc7cce cases=1 search=300 screened=39 usable=30 | 4.9 min/examiner
+[75/99] ex_393f2e56ef cases=1 search=300 screened=62 usable=30 | 4.9 min/examiner
+[76/99] ex_d5fa4f3bc3 cases=1 search=228 screened=36 usable=30 | 5.0 min/examiner
+[77/99] ex_fc6fbe51b6 cases=1 search=241 screened=32 usable=30 | 5.0 min/examiner
+[78/99] ex_604a8ee178 cases=1 search=300 screened=40 usable=30 | 5.0 min/examiner
+[79/99] ex_48f488ce9f cases=1 search=266 screened=46 usable=30 | 5.0 min/examiner
+[80/99] ex_129dc5dbd5 cases=1 search=279 screened=35 usable=30 | 5.0 min/examiner
+[81/99] ex_e3214b3aa7 cases=1 search=204 screened=42 usable=30 | 5.0 min/examiner
+[82/99] ex_77c69f7c71 cases=1 search=299 screened=37 usable=30 | 5.0 min/examiner
+[83/99] ex_39ca083290 cases=1 search=300 screened=44 usable=30 | 5.0 min/examiner
+[84/99] ex_a3997a2148 cases=1 search=96 screened=35 usable=30 | 5.1 min/examiner
+[85/99] ex_ce4a1fa6b9 cases=1 search=244 screened=31 usable=30 | 5.1 min/examiner
+[86/99] ex_ff7f7a445c cases=1 search=260 screened=39 usable=30 | 5.1 min/examiner
+[87/99] ex_d296691407 cases=1 search=300 screened=42 usable=30 | 5.1 min/examiner
+[88/99] ex_967eb58893 cases=1 search=300 screened=65 usable=30 | 5.1 min/examiner
+[89/99] ex_c2c23f5a28 cases=1 search=300 screened=36 usable=30 | 5.1 min/examiner
+[90/99] ex_b26940e72f cases=1 search=300 screened=40 usable=30 | 5.1 min/examiner
+[91/99] ex_05b9ed4f95 cases=1 search=185 screened=43 usable=30 | 5.1 min/examiner
+[92/99] ex_4e8094b24b cases=1 search=300 screened=35 usable=30 | 5.1 min/examiner
+[93/99] ex_75c291febc cases=1 search=300 screened=34 usable=30 | 5.1 min/examiner
+[94/99] ex_c4038a40ce cases=1 search=172 screened=36 usable=30 | 5.1 min/examiner
+[95/99] ex_c9fcabe5f2 cases=1 search=107 screened=36 usable=30 | 5.1 min/examiner
+[96/99] ex_4e6c521391 cases=1 search=259 screened=33 usable=30 | 5.1 min/examiner
+[97/99] ex_f51ee9204f cases=1 search=300 screened=47 usable=30 | 5.2 min/examiner
+[98/99] ex_766a904fb3 cases=1 search=300 screened=52 usable=30 | 5.2 min/examiner
+[99/99] ex_960da24214 cases=1 search=83 screened=59 usable=30 | 5.2 min/examiner
+done
+[1/100] 13421826 AU 2464: control=ex_af274de6e2 level=art_unit (ODP search) | 4.7 min/case
+[2/100] 13828188 AU 3762: control=ex_e4fcd6a8d8 level=art_unit (ODP search) | 7.2 min/case
+[3/100] 13446990 AU 2878: control=ex_ac2bc1e599 level=art_unit (ODP search) | 6.5 min/case
+[4/100] 13389393 AU 3654: control=ex_a15eee1664 level=art_unit (ODP search) | 6.2 min/case
+[5/100] 13826133 AU 3738: control=ex_196447f242 level=art_unit (ODP search) | 6.0 min/case
+[6/100] 13627444 AU 2435: control=ex_c8521df0aa level=art_unit (ODP search) | 5.5 min/case
+[7/100] 13086389 AU 3739: control=ex_1ee24d4368 level=art_unit (ODP search) | 6.3 min/case
+[8/100] 13682630 AU 1726: control=ex_2c0316bef0 level=art_unit (ODP search) | 6.3 min/case
+[9/100] 13812396 AU 3618: control=ex_8dbb8b6a13 level=art_unit (test examiner) | 5.6 min/case
+[10/100] 13773735 AU 1714: control=ex_c92fb3b07b level=art_unit (ODP search) | 5.6 min/case
+[11/100] 13334748 AU 3745: control=ex_be8b1d4c82 level=art_unit (ODP search) | 5.6 min/case
+[12/100] 13699383 AU 2856: control=ex_da1332e020 level=art_unit (ODP search) | 5.6 min/case
+[13/100] 13486305 AU 2824: control=ex_3ddf4944f6 level=art_unit (ODP search) | 6.0 min/case
+[14/100] 13865629 AU 1633: control=ex_f7d346e774 level=art_unit (ODP search) | 6.0 min/case
+[15/100] 13060040 AU 3777: control=ex_bbe1158053 level=art_unit (ODP search) | 5.9 min/case
+[16/100] 14022347 AU 3618: control=ex_de41e4476c level=art_unit (test examiner) | 5.5 min/case
+[17/100] 13151341 AU 1711: control=ex_199b7edb7f level=art_unit (ODP search) | 5.8 min/case
+[18/100] 14122074 AU 1771: control=ex_33972f31f0 level=art_unit (ODP search) | 5.8 min/case
+[19/100] 13816667 AU 2479: control=ex_2268c51aaa level=art_unit (ODP search) | 5.8 min/case
+[20/100] 13575141 AU 2188: control=ex_643ca72d70 level=art_unit (ODP search) | 5.7 min/case
+[21/100] 14355074 AU 3612: control=ex_b128ebecd4 level=art_unit (ODP search) | 5.6 min/case
+[22/100] 13789830 AU 3765: control=ex_64dd37fdac level=art_unit (ODP search) | 5.6 min/case
+[23/100] 13581789 AU 3737: control=ex_c8d75b7564 level=art_unit (ODP search) | 5.6 min/case
+[24/100] 13587693 AU 3711: control=ex_e8adc4f05b level=art_unit (test examiner) | 5.4 min/case
+[25/100] 13738208 AU 3641: control=ex_41840b984b level=art_unit (ODP search) | 5.4 min/case
+[26/100] 13414384 AU 3753: control=ex_4efd0297b3 level=art_unit (ODP search) | 5.4 min/case
+[27/100] 13542146 AU 2142: control=ex_63272ec60a level=art_unit (ODP search) | 5.4 min/case
+[28/100] 13817797 AU 1776: control=ex_840bfd3191 level=art_unit (test examiner) | 5.2 min/case
+[29/100] 13698575 AU 2128: control=ex_de0186cbde level=art_unit (ODP search) | 5.2 min/case
+[30/100] 14031839 AU 4176: control=ex_6d33aea97e level=art_unit (ODP search) | 5.2 min/case
+[31/100] 13752885 AU 2112: control=ex_5f08cc2ef3 level=art_unit (ODP search) | 5.2 min/case
+[32/100] 13861408 AU 2461: control=ex_158d665823 level=art_unit (ODP search) | 5.2 min/case
+[33/100] 13484627 AU 4151: control=None level=none_found | 5.0 min/case
+[34/100] 14045655 AU 2644: control=ex_f7cfb27919 level=art_unit (ODP search) | 5.0 min/case
+[35/100] 13862126 AU 2467: control=ex_0c782bce05 level=art_unit (ODP search) | 5.0 min/case
+[36/100] 13577408 AU 3721: control=ex_71f9f02523 level=art_unit (test examiner) | 4.9 min/case
+[37/100] 14026696 AU 2896: control=ex_a0bcde037d level=art_unit (ODP search) | 4.9 min/case
+[38/100] 13769419 AU 3773: control=ex_32499f6a25 level=art_unit (ODP search) | 4.9 min/case
+[39/100] 14282017 AU 1773: control=ex_9cbe884889 level=art_unit (ODP search) | 4.9 min/case
+[40/100] 14239985 AU 3668: control=ex_103bbd1c79 level=art_unit (ODP search) | 4.9 min/case
+[41/100] 13606749 AU 3721: control=ex_ce8bf67ab8 level=art_unit (test examiner) | 4.8 min/case
+[42/100] 13631237 AU 2659: control=ex_826ed33ae3 level=art_unit (ODP search) | 4.8 min/case
+[43/100] 13902081 AU 2612: control=ex_0b5a9ae692 level=art_unit (ODP search) | 4.8 min/case
+[44/100] 14017838 AU 3673: control=ex_5ae85346b4 level=art_unit (ODP search) | 4.8 min/case
+[45/100] 13981387 AU 1776: control=ex_8a51915abc level=art_unit (ODP search) | 4.8 min/case
+[46/100] 14400543 AU 3633: control=ex_4b0ac01ac1 level=art_unit (ODP search) | 4.9 min/case
+[47/100] 14286565 AU 2648: control=ex_799867a24e level=art_unit (ODP search) | 5.0 min/case
+[48/100] 14588659 AU 2818: control=ex_ddec7e34e2 level=art_unit (ODP search) | 5.0 min/case
+[49/100] 14053364 AU 3711: control=ex_e3214b3aa7 level=art_unit (test examiner) | 4.9 min/case
+[50/100] 14186560 AU 2856: control=ex_27332ae79d level=art_unit (ODP search) | 4.9 min/case
+[51/100] 14142013 AU 2666: control=ex_117110ca95 level=art_unit (ODP search) | 4.9 min/case
+[52/100] 14479147 AU 3618: control=ex_de41e4476c level=art_unit (test examiner) | 4.8 min/case
+[53/100] 14401783 AU 2838: control=ex_d16d23fad3 level=art_unit (ODP search) | 4.8 min/case
+[54/100] 14176833 AU 1715: control=ex_301367e6e4 level=art_unit (test examiner) | 4.7 min/case
+[55/100] 14420580 AU 2867: control=ex_4975cdd45c level=art_unit (ODP search) | 4.7 min/case
+[56/100] 14229448 AU 2471: control=ex_b3095744a0 level=art_unit (ODP search) | 4.7 min/case
+[57/100] 14511386 AU 1653: control=ex_b3ba552206 level=art_unit (ODP search) | 4.7 min/case
+[58/100] 13697289 AU 3745: control=ex_bff8bee2b1 level=art_unit (test examiner) | 4.7 min/case
+[59/100] 13986738 AU 3776: control=ex_bbad1cfc8c level=art_unit (ODP search) | 4.7 min/case
+[60/100] 14641622 AU 2674: control=ex_c5346c4401 level=art_unit (ODP search) | 4.7 min/case
+[61/100] 14012315 AU 1715: control=ex_525085c509 level=art_unit (test examiner) | 4.6 min/case
+[62/100] 14157613 AU 3714: control=ex_ae57ee9c19 level=art_unit (ODP search) | 4.6 min/case
+[63/100] 14523635 AU 2622: control=ex_bd2f734993 level=art_unit (ODP search) | 4.6 min/case
+[64/100] 14824811 AU 2819: control=ex_00647b69b2 level=art_unit (ODP search) | 4.6 min/case
+[65/100] 14622198 AU 1671: control=ex_7d4c388b3c level=art_unit (ODP search) | 4.6 min/case
+[66/100] 13941735 AU 2848: control=ex_13319fc1c8 level=art_unit (ODP search) | 4.6 min/case
+[67/100] 14516500 AU 2472: control=ex_7f7e5f1597 level=art_unit (ODP search) | 4.7 min/case
+[68/100] 14164014 AU 3723: control=ex_abd7dfb427 level=art_unit (ODP search) | 4.7 min/case
+[69/100] 14795997 AU 1621: control=ex_a0340cf074 level=art_unit (ODP search) | 4.8 min/case
+[70/100] 14711415 AU 2649: control=ex_dc4134b177 level=art_unit (ODP search) | 4.8 min/case
+[71/100] 14949549 AU 2162: control=ex_24bbf06b11 level=art_unit (ODP search) | 4.8 min/case
+[72/100] 14723918 AU 1735: control=ex_52620e05b9 level=art_unit (ODP search) | 4.8 min/case
+[73/100] 14460009 AU 1768: control=ex_a3f92cb204 level=art_unit (ODP search) | 4.8 min/case
+[74/100] 14939994 AU 2435: control=ex_f18da45303 level=art_unit (test examiner) | 4.8 min/case
+[75/100] 14857422 AU 3775: control=ex_ff6b48e380 level=art_unit (ODP search) | 4.8 min/case
+[76/100] 14584946 AU 3663: control=ex_3bfbe8cc63 level=art_unit (ODP search) | 4.8 min/case
+[77/100] 14553940 AU 2831: control=ex_196f4d580f level=art_unit (ODP search) | 4.8 min/case
+[78/100] 14706119 AU 2697: control=ex_690a854373 level=art_unit (ODP search) | 4.8 min/case
+[79/100] 14961825 AU 2811: control=ex_d1b14cc163 level=art_unit (ODP search) | 4.8 min/case
+[80/100] 14237388 AU 2871: control=ex_c2c23f5a28 level=art_unit (test examiner) | 4.7 min/case
+[81/100] 14772143 AU 1675: control=ex_08856319ab level=art_unit (ODP search) | 4.8 min/case
+[82/100] 14506249 AU 3711: control=ex_e8adc4f05b level=art_unit (test examiner) | 4.7 min/case
+[83/100] 14838440 AU 2853: control=ex_b911f3673e level=art_unit (ODP search) | 4.7 min/case
+[84/100] 14572445 AU 1637: control=ex_df1d353b45 level=art_unit (ODP search) | 4.8 min/case
+[85/100] 14543665 AU 2453: control=ex_2b64dc61cc level=art_unit (ODP search) | 4.8 min/case
+[86/100] 14935107 AU 2631: control=ex_d8097eadcd level=art_unit (ODP search) | 4.8 min/case
+[87/100] 14622961 AU 2498: control=ex_0bf3dcdbda level=art_unit (ODP search) | 4.8 min/case
+[88/100] 14665041 AU 2835: control=ex_91e407cfba level=art_unit (ODP search) | 4.8 min/case
+[89/100] 14699515 AU 2441: control=ex_9006fe101c level=art_unit (ODP search) | 4.8 min/case
+[90/100] 14747108 AU 2871: control=ex_48f488ce9f level=art_unit (test examiner) | 4.8 min/case
+[91/100] 14950996 AU 2643: control=ex_9dc48c4468 level=art_unit (ODP search) | 4.8 min/case
+[92/100] 14130025 AU 1772: control=ex_749a853e83 level=art_unit (ODP search) | 4.8 min/case
+[93/100] 14468217 AU 2845: control=ex_d3fc43e976 level=art_unit (ODP search) | 4.8 min/case
+[94/100] 14801887 AU 2833: control=ex_f063f931fa level=art_unit (ODP search) | 4.8 min/case
+[95/100] 14816491 AU 2693: control=ex_d0a5553bd4 level=art_unit (ODP search) | 4.8 min/case
+[96/100] 14482153 AU 3765: control=ex_2b135c276b level=art_unit (test examiner) | 4.8 min/case
+[97/100] 14940084 AU 2184: control=ex_3e0f8d1885 level=art_unit (ODP search) | 4.8 min/case
+[98/100] 14521920 AU 3676: control=ex_e5c938a9b2 level=art_unit (ODP search) | 4.8 min/case
+[99/100] 14353039 AU 2127: control=ex_f2d6f6675f level=art_unit (ODP search) | 4.8 min/case
+[100/100] 14681300 AU 2856: control=ex_9d2319049e level=art_unit (test examiner) | 4.8 min/case
+done
