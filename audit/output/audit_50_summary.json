@@ -1,0 +1,9 @@
+{
+ "odp_examiner_hash_matches": "50/50",
+ "prior_signed_by_odp_examiner": "43/47",
+ "next_signed_by_odp_examiner": "42/45",
+ "label_matches_raw": "50/50",
+ "reply_transaction_found": "50/50",
+ "n": 50,
+ "records_for_manual_review": 8
+}
