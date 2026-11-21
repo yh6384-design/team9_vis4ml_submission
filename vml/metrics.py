@@ -1,4 +1,4 @@
-"""Calibration and quality measures (Lec 02: never report ECE alone).
+"""Calibration and quality measures.
 
 All functions take numpy arrays: p = predicted probability of allowance, y = 0/1 outcome.
 
