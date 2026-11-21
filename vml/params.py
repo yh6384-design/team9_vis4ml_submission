@@ -8,21 +8,20 @@ SEED = 20261119
 
 # ---------------------------------------------------------------- data and cohort
 BLOCKS = ("train", "dev", "test")               # from cohort/code/build_cohort.py (2008-13, 2014, 2015-17)
-CONFIRMED_SHARE_MIN = 0.80                      # update, Response 1: a block below 80% confirmed is descriptive only
-DEV_SPLIT = "halves"                            # proposal: dev families -> disjoint slice-search / assessment halves
+CONFIRMED_SHARE_MIN = 0.80                      # a block below 80% confirmed is descriptive only
+DEV_SPLIT = "halves"                            # dev families split into disjoint slice-search / assessment halves
 DEV_SEARCH_FRACTION = 0.5                       # set DEV_SPLIT = "none" to search on all of dev
 ROUND_CAP = 3                                   # rounds 3, 4, ... are grouped as "r3+"
 
-# ---------------------------------------------------------------- examiner profile (proposal, section 4)
+# ---------------------------------------------------------------- examiner profile
 PROFILE_POOL_VERIFIED_ONLY = True               # history uses only reference episodes with a verified examiner
 LAMBDA_GRID = (1, 2, 5, 10, 20, 50, 100, 200, 500, 1000)   # shrinkage strength, tuned by forward validation inside train
-                                                # (first run picked 100 = old grid edge, so the grid was widened)
 AU_PRIOR_KAPPA = 20                             # the art-unit rate itself shrinks toward the global rate known at t
 FORWARD_VAL_YEARS = (2011, 2012, 2013)          # validation years inside the training block (family-purged)
 TIER_MIN_DEV_FAMILIES = 100                     # history tiers are merged until each has >= 100 dev families
 
 # ---------------------------------------------------------------- models (same grid size for profile off/on)
-LR_GRID = ({"C": 0.001}, {"C": 0.01}, {"C": 0.1}, {"C": 1.0})   # first run picked C=0.01 at the old edge
+LR_GRID = ({"C": 0.001}, {"C": 0.01}, {"C": 0.1}, {"C": 1.0})
 GBT_GRID = ({"max_depth": 2, "learning_rate": 0.05}, {"max_depth": 3, "learning_rate": 0.05},
             {"max_depth": 2, "learning_rate": 0.1}, {"max_depth": 3, "learning_rate": 0.1})
 GBT_FIXED = {"max_iter": 200, "min_samples_leaf": 20, "l2_regularization": 1.0}
@@ -34,7 +33,7 @@ MODEL_LABEL = {"base": "Base rate", "lr_off": "LR, profile off", "lr_on": "LR, p
 MODEL_SHORT = {"base": "B", "lr_off": "L0", "lr_on": "L1", "gbt_off": "T0", "gbt_on": "T1"}
 PAIRS = (("lr_off", "lr_on"), ("gbt_off", "gbt_on"))
 
-# ---------------------------------------------------------------- calibration measurement (proposal, section 4)
+# ---------------------------------------------------------------- calibration measurement
 CLIP = 1e-6                                     # probabilities clipped to [1e-6, 1-1e-6] for log loss
 N_BINS = 10                                     # ten fixed-width bins
 SENS_BINS = (5, 15)                             # five- and fifteen-bin sensitivity checks
@@ -44,7 +43,7 @@ EBM_MAX_BINS = 256                              # learned curve: same EBM settin
 EBM_CROSSFIT_FOLDS = 5                          # family-grouped cross-fitting
 CURVE_GRID = 101
 
-# ---------------------------------------------------------------- slices (proposal + Lec 03 Slice Finder)
+# ---------------------------------------------------------------- slices
 SLICE_MAX_PREDICATES = 2
 SLICE_MIN_FAMILIES = 100                        # in discovery AND in assessment
 SLICE_EFFECT_MIN = 0.05                         # |slice gap - overall gap| must be at least 5 points ...

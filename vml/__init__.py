@@ -1,6 +1,6 @@
 """Shared code for the Team 9 VisML project (DS-GA 3001, Fall 2026).
 
-Every stage folder (features/, profiles/, models/, ...) imports from here, so that all three of us compute
+Every stage folder (features/, profiles/, models/, ...) imports from here, so that every stage computes
 calibration, bootstrap intervals and slices with exactly the same code.
 
     vml.paths    where the inputs are and where outputs go (set VML_CORPUS / VML_OUT)
