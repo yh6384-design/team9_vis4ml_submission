@@ -1,4 +1,4 @@
-"""Learned reliability curve (Calibrate, Xenopoulos et al. 2023; Lec 02).
+"""Learned reliability curve (Calibrate, Xenopoulos et al. 2023).
 
 Idea in plain words: instead of cutting predictions into bins, fit a small model that answers
 "when the classifier said p, how often was the outcome 1?" and draw that function. Calibrate uses an
