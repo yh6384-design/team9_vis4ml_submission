@@ -1,6 +1,6 @@
 """Slices: groups described by at most two simple conditions, e.g. "TC 2800 and round >= 2".
 
-Pipeline (proposal section 4 + the Slice Finder rules from Lec 03):
+Pipeline :
 
 1. Candidates
    a. every single condition and every pair of conditions on different attributes, over technology center /
