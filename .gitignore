@@ -1,0 +1,24 @@
+# ---- outputs and caches (results live in the team Google Drive, not in git)
+outputs/
+_corpus_cache/
+episode_table/work/
+profile_corpus/share/
+*.zip
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# ---- interface data is rebuilt by export/; add the final demo version once with: git add -f interface/data/vml_data.js
+interface/data/
+
+# ---- TEAM-ONLY documents: they stay in Google Drive and are never part of the submission repo
+START_HERE.md
+PLAN.md
+FILE_MAP.md
+RUNBOOK.md
+OPEN_QUESTIONS.md
+RUN_NOTES.md
+CONTRIBUTIONS.md
+walkthrough/
+paper/
+slides/
