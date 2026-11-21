@@ -3,7 +3,7 @@
 Why families? Rounds of the same application, and applications of the same continuity family, are not
 independent: they share the claims, the examiner and the applicant. If we resampled single checkpoints, one big
 family would look like many independent cases and the interval would be too narrow. So we resample whole families
-with replacement and keep all their checkpoints together (proposal, section 4).
+with replacement and keep all their checkpoints together 
 
 Worked example. Three families: A has 3 checkpoints, B has 1, C has 2. One bootstrap draw might be {A, A, C}:
 the resampled data set then holds A's 3 checkpoints twice and C's 2 once (8 rows). We compute the metric on those
