@@ -1,0 +1,11 @@
+# Python 3.10+ (tested with 3.13). Install into a fresh environment:
+#   conda create -n vml python=3.11 -y && conda activate vml && pip install -r requirements.txt
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+matplotlib>=3.8
+interpret-core>=0.6        # Explainable Boosting Machine for the learned reliability curve (as in Calibrate)
+tabulate>=0.9              # markdown tables in the E1/E3 summaries
+# optional, only for e1_reproduce/e1_pycalibrate_widget.ipynb (the original Calibrate widget in Jupyter):
+#   pip install notebook git+https://github.com/VIDA-NYU/pycalibrate
