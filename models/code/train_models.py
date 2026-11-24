@@ -3,8 +3,8 @@
     python models/code/train_models.py
 
 The off and on versions use the same training cases and the same number of tuning settings.
-Off = case inputs only. On = the same inputs + the examiner's name + the examiner's history known before the reply date.
-An examiner never seen in training gets no name effect.
+Off = case inputs only. On = the same inputs + the examiner ID + the examiner's history known before the reply date.
+An examiner never seen in training gets no ID effect.
 Settings are tuned on the training block only, by forward validation over 2011, 2012 and 2013.
 Predictions are made for every dev and test checkpoint.
 """
@@ -33,7 +33,7 @@ STAGE = "models"
 CAT = ["tc", "art_unit", "prior_type"]
 NUM = ["round_n", "rce", "g101", "g102", "g103", "g112", "g_dp", "ground_text_ok", "filing_year", "elapsed_years"]
 PROF = ["prof_logit", "prof_log_n", "prof_log_s", "prof_avail"]
-NAME = "ex_name"            # examiner name as a model input (profile ON only); empty for unconfirmed identity
+NAME = "ex_name"            # examiner ID as a model input (profile on only); empty for unconfirmed identity
 
 
 def add_profile(df: pd.DataFrame, lam: float) -> pd.DataFrame:
@@ -60,7 +60,7 @@ def make_model(kind: str, profile: bool, cfg: dict):
     if kind == "lr":
         parts = [("cat", OneHotEncoder(handle_unknown="infrequent_if_exist", min_frequency=params.ART_UNIT_MIN_FREQ,
                                        sparse_output=False), CAT)]
-        if profile:   # examiner name: unknown or unconfirmed examiner gets all name columns 0 (no personal effect)
+        if profile:   # examiner ID: unknown or unconfirmed examiner gets all ID columns 0 (no personal effect)
             parts.append(("name", make_pipeline(
                 SimpleImputer(strategy="constant", fill_value="__none__"),
                 OneHotEncoder(handle_unknown="ignore", min_frequency=params.EXAMINER_MIN_FREQ,
@@ -110,8 +110,9 @@ def main():
     log(STAGE, f"training rows {len(train)}; forward folds: " +
         ", ".join(f"{v.reply_year.iloc[0]}: fit {len(f)} / val {len(v)}" for f, v in folds))
 
-    # 1. tune lambda
-    lam_scores = {lam: cv_score("lr", True, {"C": 1.0}, folds, lam) for lam in params.LAMBDA_GRID}
+    # 1. tune lambda, each lambda scored with its best C from the LR grid
+    lam_scores = {lam: min(cv_score("lr", True, cfg, folds, lam) for cfg in params.LR_GRID)
+                  for lam in params.LAMBDA_GRID}
     lam = min(lam_scores, key=lam_scores.get)
     log(STAGE, f"lambda scores {lam_scores}, chosen lambda = {lam}")
 
@@ -119,7 +120,7 @@ def main():
     card = {"lambda": lam, "lambda_cv_log_loss": lam_scores,
             "features": {"off": {"categorical": CAT, "numeric": NUM},
                          "on": {"categorical": CAT + [NAME], "numeric": NUM + PROF},
-                         "note": "on = off + examiner name + examiner history (dated before each reply)"},
+                         "note": "on = off + examiner ID + examiner history (dated before each reply)"},
             "models": {}}
     df_p = add_profile(df, lam)
     train_p = df_p.loc[train.index]
