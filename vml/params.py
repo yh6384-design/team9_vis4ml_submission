@@ -15,8 +15,8 @@ ROUND_CAP = 3                                   # rounds 3, 4, ... are grouped a
 
 # ---------------------------------------------------------------- examiner profile
 PROFILE_POOL_VERIFIED_ONLY = True               # history uses only reference episodes with a verified examiner
-LAMBDA_GRID = (1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000)   # shrinkage strength, tuned by forward
-                                                # validation inside train
+LAMBDA_GRID = (0.1, 0.25, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000)   # shrinkage strength,
+                                                # tuned together with the LR C by forward validation inside train
 AU_PRIOR_KAPPA = 20                             # the art-unit rate itself shrinks toward the global rate known at t
 FORWARD_VAL_YEARS = (2011, 2012, 2013)          # validation years inside the training block (family-purged)
 TIER_MIN_DEV_FAMILIES = 100                     # history tiers are merged until each has >= 100 dev families

@@ -4,8 +4,8 @@
 the examiner profile **off** and **on** (same training cases, same tuning budget).
 * **Off:** tech center, art unit, letter answered, round, RCE, the five ground flags, ground-text-found flag, filing
   year, years since filing.
-* **On:** the same + **examiner name** (LR: one column per examiner, examiners with < 5 training cases share a "rare"
-  column, an examiner unseen in training gets no name effect; Trees: one categorical input) + **examiner history**
+* **On:** the same + **examiner ID** (anonymized code; LR: one column per examiner, examiners with < 5 training cases share a "rare"
+  column, an examiner unseen in training gets no ID effect; Trees: one categorical input) + **examiner history**
   (shrunk allowance rate on the log-odds scale, log(1 + decisions), log(1 + allowances), has-history flag).
 * Examiner group is **not** an input.
 

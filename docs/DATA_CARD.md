@@ -64,7 +64,7 @@ Text found for 99.7% of checkpoints *(first run)*. Rates when found: §101 11.5%
 |---|---|
 | prof_n, prof_s | the examiner's earlier decided episodes and allowances, counting only letters mailed before the reply date (same family left out) |
 | au_rate | art-unit allowance rate known before the reply date, pulled toward the overall rate (κ = 20) |
-| prof_rate | examiner rate pulled toward au_rate: (prof_s + λ·au_rate)/(prof_n + λ); λ tuned by forward validation (reference run 2026-11-22_nancy_final: λ = 5000) |
+| prof_rate | examiner rate pulled toward au_rate: (prof_s + λ·au_rate)/(prof_n + λ); λ tuned together with the LR C by forward validation (λ = 1) |
 | hist_tier | examiner history: 0 = 0–5, 1 = 6–13, 2 = 14+ earlier decisions (`profiles/tiers.json`) |
 | ex_group | examiner group (version 2): **one label per examiner**, from all his decisions mailed before 2015-01-01 (verified episodes); allowance rate cut at the quintiles of those rates (examiners with ≥ 5 decisions): 21%, 36%, 52%, 70% → G1 (allows least) … G5 (allows most); G0 = fewer than 5 decisions before 2015 (`profiles/examiner_groups.json`). A dashboard filter only: not a model input and not used in any measure, experiment or the flagging procedure. Use it with 2015–2017 only: the decisions before 2015 include the 2014 cases' own outcomes, so filtering 2014 by it is circular |
 | ex_n_before, ex_rate_before | the decisions and the rate behind ex_group (examiner card in Visualization 1 also shows his full record, all years) |

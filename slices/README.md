@@ -11,7 +11,7 @@
    not "good");
 5. re-checks the five on 2014 part B and 2015–2017 with the same comparison.
 
-Worked example (⚑4 "examiner history ≥ 6 and no §102 rejection", LR off): group 195 cases, predicted allowance 51.3%,
+Worked example (an eligible group, "examiner history ≥ 6 and no §102 rejection", LR off): group 195 cases, predicted allowance 51.3%,
 real allowance 62.1%, gap −10.7; full population 467 cases, 50.2%, 54.4%, gap −4.1; difference −6.6, 95% CI −11.1 to
 −2.0 → passes. Fixed, seeded rule: same data → byte-identical `frozen_top5.json` (file names kept; "frozen" = fixed by
 the rule). The dashboard filters work on every feature without the five.
