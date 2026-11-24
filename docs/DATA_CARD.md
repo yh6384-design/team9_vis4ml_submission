@@ -10,7 +10,8 @@ Examiner names are replaced by hashed ids (`ex_` + sha1[:10]). No application st
 
 ## Units
 * **Episode** = applicant reply → the examiner's next letter (rules: `episode_table/docs/episode_rules.md`).
-* **Checkpoint** = the reply date of an episode in the modelling cohort.
+* **Checkpoint** = the reply date of an episode in the modelling cohort. (Version 2 docs and the dashboard call one
+  checkpoint a **case**; see `PLAN.md` section 2.)
 * **Label** `y` = 1 if the next letter is a notice of allowance, 0 if a non-final or final rejection
   (observed-event population: episodes whose next letter is another type, or not yet observed, are excluded).
 
@@ -44,7 +45,7 @@ Dev halves (by family, seed 20261119): search 512 rows / 430 families; assessmen
 | round_n, round_c, rce | reply number within the application (round_c capped at 3 = "3+"); RCE flag |
 | filing_date, filing_year, elapsed_years | from `profile_index.csv` |
 | g101, g102, g103, g112, g_dp, ground_text_ok, ground_doc | rejection grounds read from the latest rejection letter mailed on or before the answered letter |
-| *_doc_ids, *_text_paths | USPTO document ids / text files for provenance (V5) |
+| *_doc_ids, *_text_paths | USPTO document ids / text files for provenance (dashboard Visualization 6) |
 
 ## Rejection-ground extraction check 
 Regex on the letter text: `rejected under (pre-AIA) 35 U.S.C. (§) 101|102|103|112` and the section headings.
@@ -57,3 +58,14 @@ Text found for 99.7% of checkpoints *(first run)*. Rates when found: §101 11.5%
 * Allowance rate rises over time (0.38 → 0.50 → 0.47).
 * Art unit is "today's" art unit from the record, not necessarily the art unit at the checkpoint.
 * 50-record audit: 46/50 identities confirmed from the answered letter; 3 only from a later letter; 1 discrepant.
+
+## Columns added after features (profiles and models stages; `predictions.csv`, one row per dev/test checkpoint)
+| Column | Meaning |
+|---|---|
+| prof_n, prof_s | the examiner's earlier decided episodes and allowances, counting only letters mailed before the reply date (same family left out) |
+| au_rate | art-unit allowance rate known before the reply date, pulled toward the overall rate (κ = 20) |
+| prof_rate | examiner rate pulled toward au_rate: (prof_s + λ·au_rate)/(prof_n + λ); λ tuned by forward validation (reference run 2026-11-22_nancy_final: λ = 5000) |
+| hist_tier | examiner history: 0 = 0–5, 1 = 6–13, 2 = 14+ earlier decisions (`profiles/tiers.json`) |
+| ex_group | examiner group (version 2): **one label per examiner**, from all his decisions mailed before 2015-01-01 (verified episodes); allowance rate cut at the quintiles of those rates (examiners with ≥ 5 decisions): 21%, 36%, 52%, 70% → G1 (allows least) … G5 (allows most); G0 = fewer than 5 decisions before 2015 (`profiles/examiner_groups.json`). A dashboard filter only: not a model input and not used in any measure, experiment or the flagging procedure. Use it with 2015–2017 only: the decisions before 2015 include the 2014 cases' own outcomes, so filtering 2014 by it is circular |
+| ex_n_before, ex_rate_before | the decisions and the rate behind ex_group (examiner card in Visualization 1 also shows his full record, all years) |
+| base, lr_off, lr_on, gbt_off, gbt_on | predicted allowance (probability that the next letter is an allowance): base-rate model (0.401), LR off / on, Trees off / on (on = off inputs + examiner ID + examiner history) |
