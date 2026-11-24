@@ -1,24 +1,28 @@
-"""Slices: groups described by at most two simple conditions, e.g. "TC 2800 and round >= 2".
+"""The flagging procedure: groups described by at most two simple conditions, e.g. "TC 2800 and round >= 2".
+Words: PLAN.md section 2 (predicted allowance, real allowance, gap = predicted - real, group vs full population).
 
 Pipeline :
 
-1. Candidates
-   a. every single condition and every pair of conditions on different attributes, over technology center /
-      art unit, history tier, round and rejection ground;
-   b. plus the leaves of a depth-2 "residual tree": a tiny regression tree that predicts (p - y) from the same
-      attributes. Each leaf is a group where the model is unusually high or low, written as <= 2 conditions.
-2. Support: a slice needs >= 100 distinct families in the search data AND in the assessment data.
-3. The two Slice Finder tests (Lec 03: "high loss alone is not a finding"), on the search data, per model:
-      gap_diff = signed gap in the slice - signed gap of the whole search data
-      (i)  its family-bootstrap 95% interval does not include 0      -> it is not noise
-      (ii) |gap_diff| >= 0.05                                        -> it is big enough to matter
-   A slice passes if both hold for at least one of the four learned models.
-   Why gap_diff and not the raw gap: the allowance rate rises from 38% (train) to ~50% (dev), so every group is
-   underpredicted in dev. Without subtracting the overall gap, the biggest groups would win just for being big.
-4. Rank the passing slices by their largest ECE across the four learned models (proposal), freeze the top five.
+1. Groups
+   a. every single condition and every pair of conditions on different attributes, over tech center / art unit,
+      examiner history, round, RCE, letter answered and rejection grounds (§101 / §102 / §103 / §112 / double
+      patenting) = params.SLICE_ATTRS. Examiner group is NOT used (dashboard filter only);
+   b. plus the leaves of a depth-2 tree that predicts (predicted allowance - outcome) from the same attributes:
+      each leaf is a group where the model is unusually high or low, written as <= 2 conditions.
+2. Size: >= 100 distinct families in 2014 part A AND in part B.
+3. The two tests (Slice Finder: high error alone is not a finding), on part A, per model:
+      gap_diff = group gap - full population gap
+      (i)  its 95% CI (family bootstrap) does not include 0     -> not just noise
+      (ii) |gap_diff| >= 0.05 (5 points)                        -> big enough to matter
+   A group passes if both hold for at least one of the four learned models.
+   Why gap_diff and not the group gap alone: the real allowance rises from 38% (train) to ~50% (2014), so almost
+   every group has a negative gap in 2014. Subtracting the full population gap removes that shared part.
+4. Rank the groups that pass by their largest ECE among the four learned models; the top five are the
+   flagged groups ⚑1-⚑5 (⚑ = "look here"). Same data -> same five.
 
-Worked example: overall gap in the search data = -0.07 (model says 40%, truth 47%). Slice "round >= 2":
-gap = -0.19, so gap_diff = -0.12. If its bootstrap interval is [-0.18, -0.06], both tests pass.
+Worked example (reference run, ⚑4 "history >= 6 and no §102 rejection", LR off, 2014 part A): group 195 cases,
+predicted allowance 51.3%, real allowance 62.1%, gap -10.7 points; full population 467 cases, gap -4.1; gap_diff
+-6.6, 95% CI -11.1 to -2.0 -> both tests pass.
 """
 from __future__ import annotations
 
@@ -36,21 +40,32 @@ from .metrics import ece as ece_fn
 ATTR_INFO = {
     "tc": ("cat", "Technology", "TC"),
     "art_unit": ("cat", "Technology", "AU"),
-    "hist_tier": ("ord", "History", "history"),
-    "round_c": ("ord", "Round", "round"),
+    "ex_group": ("cat", "Examiner", "examiner group"),
+    "hist_tier": ("ord", "Examiner", "history"),
+    "round_c": ("ord", "Stage", "round"),
+    "rce": ("bin", "Stage", "RCE"),
+    "prior_type": ("cat", "Stage", "letter answered"),
     "g101": ("bin", "Ground", "§101"),
     "g102": ("bin", "Ground", "§102"),
     "g103": ("bin", "Ground", "§103"),
     "g112": ("bin", "Ground", "§112"),
+    "g_dp": ("bin", "Ground", "double-patenting"),
 }
-DISPLAY_COLUMNS = ["Technology", "History", "Round", "Ground"]
+# yes / no wording of the 0/1 attributes
+BIN_TEXT = {"rce": ("no RCE", "RCE filed")}
+DISPLAY_COLUMNS = ["Technology", "Examiner", "Stage", "Ground"]
+PRIOR_TYPE_TEXT = {"nonfinal_rejection": "non-final rejection", "final_rejection": "final rejection",
+                   "advisory_action": "advisory action"}
 
 
 # ------------------------------------------------------------------ predicates and rules
 def pred_label(attr, op, value, vocab=None):
     kind, _, name = ATTR_INFO[attr]
     if kind == "bin":
-        return f"{name} rejection" if value == 1 and op == "==" else f"no {name} rejection"
+        yes = (value == 1) == (op == "==")
+        if attr in BIN_TEXT:
+            return BIN_TEXT[attr][int(yes)]
+        return f"{name} rejection" if yes else f"no {name} rejection"
     key = attr + (op if op in (">=", "<=") else "")
     shown = (vocab or {}).get(key, (vocab or {}).get(attr, {})).get(value, value)
     if op == "==":
@@ -311,13 +326,21 @@ def jaccard(a: np.ndarray, b: np.ndarray) -> float:
 
 def vocab_from_tiers_file(path):
     """Text for each value. For >= / <= on history tiers we show the tier's bound in earlier cases, e.g.
-    tiers 0-5 / 6-13 / 14+:  hist_tier >= 1 -> "history ≥ 6",  hist_tier <= 1 -> "history ≤ 13"."""
+    tiers 0-5 / 6-13 / 14+:  hist_tier >= 1 -> "history ≥ 6",  hist_tier <= 1 -> "history ≤ 13".
+    Examiner-group names come from examiner_groups.json in the same folder (written by the profiles stage)."""
     import json as _json
+    from pathlib import Path as _Path
     with open(path) as f:
         t = _json.load(f)
+    gpath = _Path(path).with_name("examiner_groups.json")
+    groups = {}
+    if gpath.exists():
+        with open(gpath) as f:
+            groups = {int(k): v.split(":")[0] for k, v in _json.load(f)["labels"].items()}
     ups = t["upper_bounds_inclusive"]
     lows = [0] + [u + 1 for u in ups[:-1]]
-    return {"hist_tier": {i: lab for i, lab in enumerate(t["labels"])},
+    return {"ex_group": groups, "prior_type": PRIOR_TYPE_TEXT,
+            "hist_tier": {i: lab for i, lab in enumerate(t["labels"])},
             "hist_tier>=": {i: str(lows[i]) for i in range(len(ups))},
             "hist_tier<=": {i: (str(ups[i]) if ups[i] < 10 ** 9 else "any") for i in range(len(ups))},
             "round_c": {1: "1", 2: "2", 3: "3+"}, "round_c>=": {1: "1", 2: "2", 3: "3"},
