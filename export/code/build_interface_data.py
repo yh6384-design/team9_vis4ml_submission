@@ -214,7 +214,7 @@ def build(df: pd.DataFrame, pred_csv, synthetic: bool):
         write_json(out / "synthetic_answer.json", {"planted": pick, "shift_logit": 0.75, "models": ["lr_off", "gbt_off"],
                                                    "found_in_top5": pick["rule_id"] in frozen["rule_ids"],
                                                    "overlapping_flagged_groups": overlap})
-        log(STAGE, f"practice data saved to {target}; answer key in {out/'synthetic_answer.json'} (do not show participants)")
+        log(STAGE, f"practice data saved to {target}; answer key in {out/'synthetic_answer.json'}")
         return
     write_manifest(STAGE, {"predictions": pred_csv}, [str(target), "vml_data.js"],
                    {"cases": len(cases), "candidates": len(cand), "bytes": len(js)})

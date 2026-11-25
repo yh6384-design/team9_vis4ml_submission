@@ -11,7 +11,7 @@ Examiner names are replaced by hashed ids (`ex_` + sha1[:10]). No application st
 ## Units
 * **Episode** = applicant reply → the examiner's next letter (rules: `episode_table/docs/episode_rules.md`).
 * **Checkpoint** = the reply date of an episode in the modelling cohort. (Version 2 docs and the dashboard call one
-  checkpoint a **case**; see `PLAN.md` section 2.)
+  checkpoint a **case**.)
 * **Label** `y` = 1 if the next letter is a notice of allowance, 0 if a non-final or final rejection
   (observed-event population: episodes whose next letter is another type, or not yet observed, are excluded).
 
