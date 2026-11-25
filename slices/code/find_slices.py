@@ -18,8 +18,9 @@ Steps (details and a worked example in vml/slicing.py):
      RCE, letter answered, grounds incl. double patenting; NOT examiner group), plus small-tree leaves (one per model)
   2. size: >= 100 distinct families in part A AND in part B
   3. two tests on part A, per model: group gap - full population gap (gap = predicted allowance - real allowance);
-     |difference| >= 5 points AND its 95% CI (500 family re-draws) excludes 0; at least one of the four models
-  4. rank the groups that pass by their largest ECE among the four models; the first five = ⚑1-⚑5
+     |difference| >= 0.05 AND its 95% CI (500 family re-draws) excludes 0; at least one of the four models
+  4. rank the groups that pass by their largest ECE among the four models; a group with exactly the same part A cases
+     as a better-ranked group is not ranked (column duplicate_of); the first five = ⚑1-⚑5
   5. re-check the five on part B and 2015-2017 with the same comparison (+ ECE with 95% CI, learned curves)
 
 Exploratory: no formal error-rate control after the search. Experiment 3 measures how often this procedure flags
@@ -74,8 +75,10 @@ def main():
     tab, rules = search(s_df, a_df, models, vocab=vocab)
     tab.to_csv(out / "candidates.csv", index=False)
     n_el = int(tab.eligible.sum())
+    n_dup = int((tab.duplicate_of != "").sum())
     log(STAGE, f"{len(tab)} candidates; support ok {int(tab.support_ok.sum())}; pass tests "
-               f"{int(tab.passes_tests.sum())}; eligible {n_el}")
+               f"{int(tab.passes_tests.sum())}; eligible {n_el} ({n_el - n_dup} with different cases; "
+               f"{n_dup} same cases as a better-ranked group, not ranked)")
     if n_el < params.SLICE_TOP_K:
         log(STAGE, f"WARNING: only {n_el} eligible slices (< {params.SLICE_TOP_K}).")
 
@@ -129,7 +132,7 @@ def main():
         write_json(out / "slice_curves.json", curves)
     write_manifest(STAGE, {"predictions": pred_csv}, ["candidates.csv", "frozen_top5.json",
                                                       "frozen_assessment.csv", "slice_curves.json"],
-                   {"eligible": n_el, "frozen": record["rule_ids"]})
+                   {"eligible": n_el, "eligible_distinct": n_el - n_dup, "frozen": record["rule_ids"]})
     cols = ["part", "label", "n_families"] + [f"gap_{m}" for m in models] + ["ece_max"]
     log(STAGE, "\n" + fa[cols].round(3).to_string(index=False))
 
