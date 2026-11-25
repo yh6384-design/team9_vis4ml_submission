@@ -5,8 +5,10 @@
 ## Run
 
 ```bash
-python metrics/code/run_metrics.py   (--fast while debugging)
+python metrics/code/run_metrics.py
 ```
+
+Add `--fast` (fewer bootstrap re-draws) while debugging.
 
 (Set `VML_OUT` and `VML_CORPUS` first, see the top-level `README.md`. `bash run_all.sh` runs every stage in order.)
 
