@@ -75,7 +75,7 @@ def main():
     tab, rules = search(s_df, a_df, models, vocab=vocab)
     tab.to_csv(out / "candidates.csv", index=False)
     n_el = int(tab.eligible.sum())
-    n_dup = int((tab.duplicate_of != "").sum())
+    n_dup = int(tab.duplicate_of.notna().sum())
     log(STAGE, f"{len(tab)} candidates; support ok {int(tab.support_ok.sum())}; pass tests "
                f"{int(tab.passes_tests.sum())}; eligible {n_el} ({n_el - n_dup} with different cases; "
                f"{n_dup} same cases as a better-ranked group, not ranked)")
