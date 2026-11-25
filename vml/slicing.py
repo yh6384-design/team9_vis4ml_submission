@@ -306,9 +306,21 @@ def search(search_df, assess_df, model_cols, vocab=None, B=params.SLICE_BOOT_B, 
     tab["support_ok"] = (tab["search_n_families"] >= min_fam) & (tab["assess_n_families"] >= min_fam)
     tab["eligible"] = tab["support_ok"] & tab["passes_tests"]
     tab = tab.sort_values(["eligible", "search_ece_max"], ascending=[False, False]).reset_index(drop=True)
-    tab["rank"] = np.where(tab["eligible"], np.arange(1, len(tab) + 1), np.nan)
-    tab["top_k"] = tab["eligible"] & (tab["rank"] <= top_k)
     order = {rule_id(r): r for r in rules}
+    # Two differently written rules can select exactly the same cases (e.g. "round = 1" and "round <= 1").
+    # Among eligible groups with the same 2014 part A cases, only the best-ranked one is kept for ranking.
+    dup_of, seen = [""] * len(tab), {}
+    for i in np.flatnonzero(tab["eligible"].to_numpy()):
+        rid = tab.at[i, "rule_id"]
+        key = rule_mask(search_df, order[rid]).tobytes()
+        if key in seen:
+            dup_of[i] = seen[key]
+        else:
+            seen[key] = rid
+    tab["duplicate_of"] = dup_of
+    distinct = tab["eligible"] & (tab["duplicate_of"] == "")
+    tab["rank"] = np.where(distinct, distinct.cumsum(), np.nan)
+    tab["top_k"] = distinct & (tab["rank"] <= top_k)
     return tab, [order[rid] for rid in tab["rule_id"]]
 
 
