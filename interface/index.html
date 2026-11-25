@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Can You Trust Personalized Odds? · Team 9 · VisML 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Color vision deficiency matrices from Machado, Oliveira, and Fernandes (2009). -->
+    <filter id="cvd-protanopia"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-deuteranopia"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-tritanopia"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.303900 0 0  0 0 0 1 0"/></filter>
+    <filter id="cvd-grayscale"><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#app">Skip to visualizations</a>
+<header class="page-width">
+  <div class="masthead">
+    <div class="masthead-heading">
+      <div class="masthead-meta">
+        <span>Team 9 · DS-GA 3001</span>
+        <span class="practice-mark" id="practice-mark" hidden>Practice data</span>
+      </div>
+      <button type="button" class="help glossary" data-help="words" aria-label="Dashboard glossary" aria-controls="helpbox" aria-expanded="false">Glossary <span aria-hidden="true">?</span></button>
+    </div>
+    <h1 class="dashboard-title">Can You Trust Personalized Odds?</h1>
+    <p class="subtitle">Predicted vs. real patent allowance, with the examiner profile off and on.</p>
+    <p id="practice-note" class="practice-note" hidden>Predictions and outcomes are simulated. Document references come from the original case records.</p>
+    <nav class="view-nav" id="view-nav" aria-label="Jump to a visualization">
+      <a href="#vis1">Your case</a>
+      <a href="#vis2">Reliability</a>
+      <a href="#vis3">Profile comparison</a>
+      <a href="#vis4">Flagged groups</a>
+      <a href="#vis5">Groups × models</a>
+      <a href="#vis6">Cases &amp; sources</a>
+    </nav>
+  </div>
+  <section class="filter-panel" id="filter-panel" aria-label="Dashboard filters" tabindex="-1">
+    <div class="filter-row">
+      <h2 class="filter-title">Data</h2>
+      <div class="filter-fields data-fields" id="filters">
+        <label><span>Period</span><select id="f-part"></select></label>
+        <label><span>Cohort</span><select id="f-cohort">
+          <option value="primary">Confirmed only</option>
+          <option value="all">All cases</option></select></label>
+        <label><span>Model</span><select id="f-pair">
+          <option value="lr">Logistic regression</option>
+          <option value="gbt">Boosted trees</option></select></label>
+        <label><span>Color vision</span><select id="f-cvd">
+          <option value="">Normal vision</option><option value="protanopia">Protanopia (red blindness)</option>
+          <option value="deuteranopia">Deuteranopia (green blindness)</option><option value="tritanopia">Tritanopia (blue blindness)</option>
+          <option value="grayscale">Grayscale</option></select></label>
+      </div>
+    </div>
+    <div class="filter-row">
+      <div class="filter-heading">
+        <h2 class="filter-title">Your case</h2>
+        <button type="button" class="help" data-help="filters" aria-label="Help for case filters" aria-controls="helpbox" aria-expanded="false">?</button>
+      </div>
+      <div class="case-fields">
+        <div class="filter-fields casefilters" id="casefilters"></div>
+        <p id="examiner-group-note" class="filter-note" role="status" hidden>
+          Examiner group is available for 2015–2017 only because its labels use outcomes from 2014.
+        </p>
+        <details class="extra-filters">
+          <summary>More filters <span id="extra-filter-count" hidden></span></summary>
+          <div class="filter-fields" id="casefilters-more"></div>
+        </details>
+      </div>
+    </div>
+  </section>
+</header>
+
+<div class="page-width selection-bar">
+  <div class="selection" id="selection" aria-live="polite"></div>
+  <a class="edit-filters" id="edit-filters" href="#filter-panel">Edit filters <span aria-hidden="true">↑</span></a>
+</div>
+
+<main class="page-width" id="app" tabindex="-1">
+  <section class="view" id="vis1">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 1</p><h2>Your case</h2></div>
+      <button type="button" class="help" data-help="vis1" aria-label="Help for Your case" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research questions 1 and 2</strong> · For cases like mine, how close is predicted allowance to real allowance?</p>
+    <div class="body" id="vis1-body"></div>
+  </section>
+
+  <section class="view" id="vis2">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 2</p><h2>Reliability diagram</h2></div>
+      <button type="button" class="help" data-help="vis2" aria-label="Help for the reliability diagram" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research question 1</strong> · Across 0–100%, does predicted allowance match real allowance?</p>
+    <div class="split2">
+      <div class="body" id="vis2-body"></div>
+      <div class="side">
+        <div class="controls stack">
+          <label>Bins <select id="vis2-bins"><option>5</option><option selected>10</option><option>15</option></select></label>
+          <label class="choice"><input type="checkbox" id="vis2-learned" checked> Smooth curve (EBM)</label>
+          <label>Brush by <select id="vis2-brushmodel"><option value="off">Profile off</option><option value="on">Profile on</option></select></label>
+        </div>
+        <div id="vis2-info"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="vis3">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 3</p><h2>Profile off vs. on</h2></div>
+      <button type="button" class="help" data-help="vis3" aria-label="Help for profile comparison" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research question 1</strong> · Does the profile improve case ranking (AUROC) or calibration (ECE)?</p>
+    <div class="view-controls">
+      <div class="controls" role="group" aria-label="Profile comparison measure">
+        <span class="control-title">Measure</span>
+        <label class="choice"><input type="radio" name="vis3metric" value="auroc" checked> AUROC</label>
+        <label class="choice"><input type="radio" name="vis3metric" value="ece"> ECE</label>
+        <label class="choice"><input type="radio" name="vis3metric" value="gap"> Gap</label>
+        <label class="choice"><input type="radio" name="vis3metric" value="brier"> Brier score</label>
+        <label class="choice"><input type="radio" name="vis3metric" value="logloss"> Log loss</label>
+      </div>
+      <div class="controls" role="group" aria-label="Profile comparison groups">
+        <span class="control-title">Split by</span>
+        <label class="choice"><input type="radio" name="vis3split" value="hist" checked> Examiner history</label>
+        <label class="choice"><input type="radio" name="vis3split" value="round"> Round</label>
+        <label class="choice"><input type="radio" name="vis3split" value="tc"> Tech center</label>
+      </div>
+    </div>
+    <div class="body" id="vis3-body"></div>
+  </section>
+
+  <section class="view" id="vis4">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 4</p><h2>Re-checking flagged groups</h2></div>
+      <button type="button" class="help" data-help="vis4" aria-label="Help for flagged groups" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research question 2 · Find and re-check</strong> · Which groups were flagged in 2014, and do their gaps persist?</p>
+    <div class="vis4-layout">
+      <div>
+        <div class="controls" role="group" aria-label="Groups to show">
+          <span class="control-title">Show</span>
+          <label class="choice"><input type="radio" name="vis4show" value="frozen" checked> ⚑ Top 5</label>
+          <label class="choice"><input type="radio" name="vis4show" value="eligible"> Passed the tests</label>
+          <label class="choice"><input type="radio" name="vis4show" value="all"> All groups tried</label>
+        </div>
+        <div class="body" id="vis4-body"></div>
+      </div>
+      <div class="body" id="vis4-later"></div>
+    </div>
+    <div id="vis4-answer"></div>
+  </section>
+
+  <section class="view" id="vis5">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 5</p><h2>Groups × models</h2></div>
+      <button type="button" class="help" data-help="vis5" aria-label="Help for the group and model matrix" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research question 2 · Compare</strong> · Do all four models have the same gaps in these groups?</p>
+    <div class="controls" role="group" aria-label="Group and model comparison measure">
+      <span class="control-title">Measure</span>
+      <label class="choice"><input type="radio" name="vis5metric" value="rel" checked> Group gap − full population gap</label>
+      <label class="choice"><input type="radio" name="vis5metric" value="gap"> Gap</label>
+      <label class="choice"><input type="radio" name="vis5metric" value="ece"> ECE</label>
+      <label class="choice"><input type="checkbox" id="vis5-more"> More groups</label>
+    </div>
+    <div class="body" id="vis5-body"></div>
+  </section>
+
+  <section class="view" id="vis6">
+    <div class="view-heading">
+      <div><p class="view-number">Visualization 6</p><h2>Cases and sources</h2></div>
+      <button type="button" class="help" data-help="vis6" aria-label="Help for cases and sources" aria-controls="helpbox" aria-expanded="false">?</button>
+    </div>
+    <p class="rq"><strong>Research question 2 · Check</strong> · Which case records and earlier outcomes went into the examiner profile?</p>
+    <div class="vis6wrap">
+      <div class="body" id="vis6-table"></div>
+      <div class="body" id="vis6-detail"><p class="muted">Click a case to see its letters and the examiner's earlier decisions behind its profile.</p></div>
+    </div>
+  </section>
+</main>
+
+<div id="tooltip" class="tooltip"></div>
+<div id="helpbox" class="helpbox" role="dialog" aria-label="Dashboard help"></div>
+<footer class="page-width" id="footer" aria-label="Data provenance"></footer>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="data/vml_data.js"></script>
+<script src="js/compute.js"></script>
+<script src="js/app.js"></script>
+<script src="js/vis1_case.js"></script>
+<script src="js/vis2_reliability.js"></script>
+<script src="js/vis3_profile.js"></script>
+<script src="js/vis4_groups.js"></script>
+<script src="js/vis5_group_model.js"></script>
+<script src="js/vis6_cases.js"></script>
+<script>VApp.start();</script>
+</body>
+</html>
