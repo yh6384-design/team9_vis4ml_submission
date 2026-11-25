@@ -1,5 +1,5 @@
 """The flagging procedure: groups described by at most two simple conditions, e.g. "TC 2800 and round >= 2".
-Words: PLAN.md section 2 (predicted allowance, real allowance, gap = predicted - real, group vs full population).
+Words: predicted allowance, real allowance, gap = predicted - real, group vs full population.
 
 Pipeline :
 
@@ -20,7 +20,7 @@ Pipeline :
 4. Rank the groups that pass by their largest ECE among the four learned models; the top five are the
    flagged groups ⚑1-⚑5 (⚑ = "look here"). Same data -> same five.
 
-Worked example (reference run, ⚑4 "history >= 6 and no §102 rejection", LR off, 2014 part A): group 195 cases,
+Worked example (an eligible group, "history >= 6 and no §102 rejection", LR off, 2014 part A): group 195 cases,
 predicted allowance 51.3%, real allowance 62.1%, gap -10.7 points; full population 467 cases, gap -4.1; gap_diff
 -6.6, 95% CI -11.1 to -2.0 -> both tests pass.
 """
