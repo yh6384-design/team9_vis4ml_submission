@@ -2,6 +2,7 @@
 
 **What it does:** checks how reliable the flagging procedure of `slices/` is. Real data cannot
 tell us which groups truly have a gap, so the procedure is run on a **practice copy of 2014 with a known answer**:
+
 1. keep the 947 cases of 2014 (features and LR-off predicted allowance unchanged); replace each outcome by a draw:
    random number 0–100 below the predicted allowance → allowed, else rejected (fixed seed). Every case is then allowed
    with probability equal to its prediction, so every group's true gap is 0;
@@ -15,14 +16,19 @@ Outcomes are drawn as Y ∼ Bernoulli(q(X)) with p = q(X), then known distortion
 tested itself the same way.
 
 ## Run
+
 ```bash
-python e3_synthetic/code/e3_planted.py   (--quick to test the code)
+python e3_synthetic/code/e3_planted.py
 ```
+
+Add `--quick` (3 runs per setting) to test the code.
 (Set `VML_OUT` and `VML_CORPUS` first, see the top-level `README.md`. `bash run_all.sh` runs every stage in order, in conda env `vml`.)
 
 ## Inputs
+
 VML_OUT/models/predictions.csv, VML_OUT/slices/candidates.csv
 
 ## Outputs (in `$VML_OUT/e3/`)
+
 e3_runs.csv (runs with a known gap), e3_null.csv (runs with no gap), e3_real_perturb.csv (known gap added to the real
 data), e3_summary.json/.md, e3_plan.json (the groups chosen in advance). Every stage also writes `_run.json` (who ran it, when, git commit, input sha1s, all parameters).
